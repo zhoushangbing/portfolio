@@ -6,19 +6,33 @@
 
 /* ---------- 设计变量 ---------- */
 :root {
+  color-scheme: light;
   --accent: #e4572e;            /* 全站唯一强调色 */
-  --ink: #16181d;               /* 深色：左侧栏底色 / 标题文字 */
+  --ink: #16181d;               /* 标题文字 */
   --ink-2: #23262d;             /* 深色层次 */
   --paper: #faf8f4;             /* 右侧底色 */
   --text: #2a2d33;              /* 正文 */
   --text-soft: #6b6f78;         /* 次要文字 */
   --line: rgba(22, 24, 29, 0.14);
+  --chip-bg: rgba(22, 24, 29, 0.04);  /* 浅底小标签底色 */
+  --sidebar-bg: #16181d;        /* 左侧栏底色（不随主题反转） */
   --on-dark: #f4f1ea;           /* 深底上的主文字 */
   --on-dark-soft: #9aa0ab;      /* 深底上的次要文字 */
   --line-on-dark: rgba(244, 241, 234, 0.14);
   --sidebar-w: 320px;
   --font-mono: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, "Courier New", monospace;
   --font-sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+/* ---------- 深色主题：仅反转主内容区的底色 / 文字 / 边框 ---------- */
+[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #f4f1ea;                        /* 标题文字转为浅色 */
+  --paper: #1b1e24;                      /* 右侧底色转为深色 */
+  --text: #d2d5db;
+  --text-soft: #8f939c;
+  --line: rgba(244, 241, 234, 0.14);
+  --chip-bg: rgba(244, 241, 234, 0.05);
 }
 
 /* ---------- 基础重置 ---------- */
@@ -45,7 +59,7 @@ dd { margin: 0; }
   position: fixed;
   inset: 0 auto 0 0;
   width: var(--sidebar-w);
-  background: var(--ink);
+  background: var(--sidebar-bg);
   color: var(--on-dark);
   overflow-y: auto;
   z-index: 10;
@@ -225,7 +239,7 @@ dd { margin: 0; }
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-soft);
-  background: rgba(22, 24, 29, 0.04);
+  background: var(--chip-bg);
   border: 1px solid var(--line);
   border-radius: 999px;
   padding: 4px 11px;
@@ -319,6 +333,30 @@ dd { margin: 0; }
   color: var(--text-soft);
 }
 
+/* ---------- 主题切换按钮：桌面固定于页面右上角 ---------- */
+.theme-toggle {
+  position: fixed;
+  top: 24px;
+  right: clamp(28px, 7vw, 96px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--text-soft);
+  cursor: pointer;
+  z-index: 20;
+  transition: color 0.2s, border-color 0.2s;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle__icon--sun { display: none; }   /* 浅色时显示月亮（点击切深色） */
+[data-theme="dark"] .theme-toggle__icon--sun { display: block; }
+[data-theme="dark"] .theme-toggle__icon--moon { display: none; }
+
 /* ============================================================
    响应式：≤960px 改为上下布局，左栏压缩为吸顶头部
    ============================================================ */
@@ -333,7 +371,7 @@ dd { margin: 0; }
     border-bottom: 1px solid var(--line-on-dark);
   }
   .sidebar__inner { gap: 12px; padding: 14px 20px 0; min-height: 0; }
-  .profile { display: flex; align-items: center; gap: 14px; }
+  .profile { display: flex; align-items: center; gap: 14px; padding-right: 42px; }
   .profile__avatar { width: 44px; height: 44px; margin: 0; border-width: 1.5px; }
   .profile__name { font-size: 17px; }
   .profile__role { margin-top: 2px; font-size: 11px; }
@@ -341,6 +379,16 @@ dd { margin: 0; }
   .nav { flex-direction: row; gap: 24px; padding-bottom: 12px; overflow-x: auto; }
   .nav__link { padding: 2px 0; border-left: 0; font-size: 14px; }
   .nav__link.is-active { color: var(--accent); }
+
+  /* 按钮锚定到吸顶导航栏右侧 */
+  .theme-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+  }
+  .theme-toggle svg { width: 14px; height: 14px; }
 
   .main { margin-left: 0; }
   .hero { min-height: 60vh; padding-top: 64px; }

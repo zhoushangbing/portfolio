@@ -1,8 +1,46 @@
 /* ============================================================
-   页面逻辑：渲染项目列表 / 导航滚动高亮 / 年份更新
+   页面逻辑：主题切换 / 渲染项目列表 / 导航滚动高亮 / 年份更新
    ============================================================ */
 (function () {
   "use strict";
+
+  /* ---------- 深浅色主题切换（localStorage 记忆用户选择） ---------- */
+  var THEME_KEY = "theme";
+  var root = document.documentElement;
+
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      root.setAttribute("data-theme", "dark");
+    } else {
+      root.removeAttribute("data-theme");
+    }
+  }
+
+  function currentTheme() {
+    return root.getAttribute("data-theme") === "dark" ? "dark" : "light";
+  }
+
+  /* 初始化：读取上次选择，默认浅色 */
+  var savedTheme = null;
+  try { savedTheme = localStorage.getItem(THEME_KEY); } catch (e) { /* 忽略受限环境 */ }
+  if (savedTheme === "dark" || savedTheme === "light") applyTheme(savedTheme);
+
+  var themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    function syncToggleState() {
+      themeToggle.setAttribute(
+        "aria-label",
+        currentTheme() === "dark" ? "切换到浅色主题" : "切换到深色主题"
+      );
+    }
+    syncToggleState();
+    themeToggle.addEventListener("click", function () {
+      var next = currentTheme() === "dark" ? "light" : "dark";
+      applyTheme(next);
+      syncToggleState();
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) { /* 忽略受限环境 */ }
+    });
+  }
 
   /* ---------- 渲染项目列表（数据来自 data.js，便于后续扩展） ---------- */
   var list = document.getElementById("project-list");
