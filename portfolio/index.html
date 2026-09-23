@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="周尚炳的个人作品集：AI 辅助开发与大语言模型应用方向的项目作品、技能与联系方式。">
+  <title>周尚炳 · 个人作品集</title>
+  <link rel="stylesheet" href="css/style.css?v=20260919">
+</head>
+<body>
+
+  <!-- ===== 左侧固定栏：个人介绍 / 技能 / 导航 / 联系方式 ===== -->
+  <aside class="sidebar">
+    <div class="sidebar__inner">
+
+      <header class="profile">
+        <img class="profile__avatar" src="assets/images/avatar.jpg" alt="周尚炳的头像">
+        <div class="profile__text">
+          <h1 class="profile__name">周尚炳</h1>
+          <p class="profile__role">软件工程 · AI 辅助开发与大语言模型应用</p>
+        </div>
+      </header>
+
+      <p class="profile__bio">
+        软件工程专业在读，主要关注 AI 辅助开发与大语言模型技术，
+        持续学习前后端开发、数据可视化与 AI 应用构建。
+      </p>
+
+      <section class="skills" aria-label="技能方向">
+        <h2 class="side-label">技能方向</h2>
+        <div class="skill-group">
+          <h3 class="skill-group__name">编程语言</h3>
+          <ul class="skill-group__list">
+            <li>Python</li>
+            <li>Java</li>
+            <li>TypeScript</li>
+            <li>HTML / CSS</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3 class="skill-group__name">在学方向</h3>
+          <ul class="skill-group__list">
+            <li>前后端开发</li>
+            <li>数据可视化</li>
+            <li>AI 应用构建</li>
+          </ul>
+        </div>
+      </section>
+
+      <nav class="nav" aria-label="页面导航">
+        <a class="nav__link" href="#works"><span class="nav__num">01</span>作品</a>
+        <a class="nav__link" href="#about"><span class="nav__num">02</span>关于</a>
+        <a class="nav__link" href="#contact"><span class="nav__num">03</span>联系</a>
+      </nav>
+
+      <div class="side-contact">
+        <a class="side-contact__link" href="mailto:xiaohe@example.com">xiaohe@example.com</a>
+        <a class="side-contact__link" href="https://github.com/xiaohe-dev" target="_blank" rel="noopener">GitHub ↗</a>
+        <a class="side-contact__link" href="https://xiaohe.dev" target="_blank" rel="noopener">xiaohe.dev ↗</a>
+      </div>
+
+      <p class="sidebar__copy">© <span class="year">2026</span> 周尚炳</p>
+
+    </div>
+  </aside>
+
+  <!-- ===== 右侧主内容区 ===== -->
+  <main class="main">
+
+    <!-- Hero：第一印象 -->
+    <section class="hero">
+      <p class="hero__eyebrow">PORTFOLIO · 2026</p>
+      <h2 class="hero__title">把想法，<br>做成<em>看得见</em>的产品。</h2>
+      <p class="hero__sub">
+        你好，我是周尚炳。这里整理了我的项目作品，
+        涵盖移动应用、Web 平台、数据可视化与 AI 应用。
+      </p>
+      <a class="hero__more" href="#works">向下浏览作品 ↓</a>
+    </section>
+
+    <!-- 作品：项目由 js/main.js 依据 js/data.js 渲染，新增项目只需修改 data.js -->
+    <section class="section" id="works">
+      <header class="section__head">
+        <span class="section__index">01</span>
+        <h2 class="section__title">精选作品</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </header>
+      <div class="projects" id="project-list">
+        <noscript><p class="projects__empty">请启用 JavaScript 以查看项目列表。</p></noscript>
+      </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section class="section" id="about">
+      <header class="section__head">
+        <span class="section__index">02</span>
+        <h2 class="section__title">关于我</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </header>
+      <div class="about">
+        <div class="about__text">
+          <p class="about__lead">软件工程专业在读，专注于 AI 辅助开发与大语言模型应用。</p>
+          <p>平时主要使用 Python、Java 和 TypeScript 进行项目开发，也在持续学习前后端开发、数据可视化和 AI 应用构建。</p>
+          <p>已完成从微信小程序、Web 平台到数据可视化大屏与大语言模型应用的多个项目。</p>
+        </div>
+        <dl class="about__facts">
+          <div class="fact">
+            <dt>现状</dt>
+            <dd>广州软件学院 · 软件工程在读</dd>
+          </div>
+          <div class="fact">
+            <dt>方向</dt>
+            <dd>AI 辅助开发 · 大语言模型应用</dd>
+          </div>
+          <div class="fact">
+            <dt>城市</dt>
+            <dd>中国 · 广州</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 联系方式 -->
+    <section class="section section--contact" id="contact">
+      <header class="section__head">
+        <span class="section__index">03</span>
+        <h2 class="section__title">联系我</h2>
+        <span class="section__rule" aria-hidden="true"></span>
+      </header>
+      <p class="contact__lead">欢迎通过以下方式与我联系。</p>
+      <a class="contact__mail" href="mailto:xiaohe@example.com">xiaohe@example.com<span class="contact__arrow" aria-hidden="true">→</span></a>
+      <div class="contact__links">
+        <span>微信：xiaohezi</span>
+        <a href="https://github.com/xiaohe-dev" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://xiaohe.dev" target="_blank" rel="noopener">个人主页 ↗</a>
+      </div>
+      <footer class="footer">
+        <p>© <span class="year">2026</span> 周尚炳 · 使用原生 HTML / CSS / JavaScript 构建</p>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="js/data.js?v=20260918"></script>
+  <script src="js/main.js?v=20260918"></script>
+</body>
+</html>
